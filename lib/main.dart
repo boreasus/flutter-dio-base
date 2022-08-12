@@ -1,9 +1,7 @@
 import 'dart:convert';
-
+import 'package:help/entity/checkPin.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
-import 'package:help/entity/Product.dart';
-import 'package:help/entity/Response.dart';
 
 void main() {
   runApp(const Rest());
@@ -19,11 +17,19 @@ class Rest extends StatelessWidget {
 }
 
 void DioClient() async {
-  var api = 'https://reqres.in/api/users?page=2';
+  //var api = 'https://reqres.in/api/users?page=2';
+  var api =
+      'http://10.0.2.2:3000/checkPin/api/fu_mobile/CheckPin/58657358838/8838';
   var result = await Dio().get(api);
-  print(result.data);
+
+  print("RESULT DATA ===========================> ");
+  //print(ResponseData.fromJson(result.data).data[1].first_name);
+  print(Data.fromJson(result.data).sub!.Result);
+
+  //  var deneme = Map<String, dynamic>.from(result.data);
   // var responseData = ResponseData.fromJson(result.data);
-  print("=========================================>>>>>>>>>>>>>>");
+  // print("=========================================>>>>>>>>>>>>>>");
+  // print(responseData.data);
 
   /*
   try{
